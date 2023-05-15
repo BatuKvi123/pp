@@ -1,0 +1,83 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88 
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
+]=]
+
+-- Instances: 3 | Scripts: 1 | Modules: 0
+local G2L = {};
+
+-- StarterGui.PP
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["Name"] = [[PP]];
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+-- StarterGui.PP.activate
+G2L["2"] = Instance.new("TextButton", G2L["1"]);
+G2L["2"]["TextWrapped"] = true;
+G2L["2"]["TextScaled"] = true;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["2"]["TextSize"] = 14;
+G2L["2"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["2"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Size"] = UDim2.new(0, 319, 0, 267);
+G2L["2"]["Name"] = [[activate]];
+G2L["2"]["Text"] = [[Activate PP script BY NOREMIUS]];
+G2L["2"]["Position"] = UDim2.new(0.3731847405433655, 0, 0.2301851063966751, 0);
+
+-- StarterGui.PP.activate.LocalScript
+G2L["3"] = Instance.new("LocalScript", G2L["2"]);
+
+
+-- StarterGui.PP.activate.LocalScript
+local function C_3()
+local script = G2L["3"];
+	-- Put this code in a LocalScript within a GUI Button
+	local button = script.Parent
+	button.MouseButton1Click:Connect(function()
+		script.Parent.Visible = false
+		local character = game.Players.LocalPlayer.Character
+		local hat1 = character["Pal Hair"]
+		if hat1 then
+			local attachment = Instance.new("Attachment")
+			attachment.Name = "HatAttachment"
+			attachment.Position = Vector3.new(6, 0, 0) -- Adjust the coordinates as desired
+	
+			local weld = Instance.new("Weld")
+			weld.Name = "HatWeld"
+			weld.Part0 = character.Head
+			weld.Part1 = hat1.Handle
+			weld.C0 = CFrame.new(Vector3.new(0, -2.5, -2)) -- Adjust the position and orientation as desired
+	
+			attachment.Parent = character.Head
+			weld.Parent = hat1.Handle
+	
+			hat1.Handle.Mesh:Remove()
+		end
+		local character = game.Players.LocalPlayer.Character
+		local hat1 = character:FindFirstChild("Hat1")
+		if hat1 then
+			local attachment = Instance.new("Attachment")
+			attachment.Name = "HatAttachment"
+			attachment.Position = Vector3.new(6, 0, 0) -- Adjust the coordinates as desired
+	
+			local weld = Instance.new("Weld")
+			weld.Name = "HatWeld"
+			weld.Part0 = character.Head
+			weld.Part1 = hat1.Handle
+			weld.C0 = CFrame.new(Vector3.new(0, -2.5, -1)) -- Adjust the position and orientation as desired
+	
+			attachment.Parent = character.Head
+			weld.Parent = hat1.Handle
+	
+			hat1.Handle.Mesh:Remove()
+			end
+	end)
+	
+end;
+task.spawn(C_3);
+
+return G2L["1"], require;
